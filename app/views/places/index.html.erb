@@ -9,3 +9,13 @@
 <p>
   <a href="/places/new">New place</a>
 </p>
+
+<%# conditionally display attached file if post.uploaded_image.attached? %>
+<% if post.uploaded_image.attached? %>
+  <%# use url_for(post.uploaded_image) as attached file's url %>
+  <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
+<% else %>
+  <%# otherwise display original image url from database column %>
+  <img src="<%= post["image"] %>" class="img-fluid">
+<% end %>
+
